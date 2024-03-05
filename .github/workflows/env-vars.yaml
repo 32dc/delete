@@ -1,0 +1,22 @@
+name: Test Env Vars - Demo
+
+on:
+  workflow_dispatch:
+
+jobs:
+  hello-job:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Generate value
+        run: |
+          echo $GITHUB_ENV
+          echo "MY_VALUE=hello" > $GITHUB_ENV
+
+      - name: Use value
+        run: echo $GITHUB_ENV
+      
+      - name: Use value2
+        run: |
+          echo $MY_VALUE
+          echo $GITHUB_ENV
